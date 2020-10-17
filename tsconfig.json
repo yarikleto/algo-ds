@@ -1,0 +1,15 @@
+{
+  "rootDir": "./src",
+  "baseUrl": ".",
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "typeRoots": ["./typings", "node_modules/@types"],
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+  }

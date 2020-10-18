@@ -2,7 +2,8 @@
   <h1>
     <br/>
     💻
-    algo-ds
+    <br />
+    Algorithms and Data Structures
     <br />
   </h1>
   <sup>

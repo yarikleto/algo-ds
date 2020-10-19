@@ -12,7 +12,7 @@ const createNode = (value: any): Node => ({
   prev: null,
 });
 
-const createLinkedList = () => {
+const createDoublyLinkedList = () => {
   let head: Node | null = null;
   let tail: Node | null = null;
   let size = 0;
@@ -175,5 +175,5 @@ const createLinkedList = () => {
   };
 }
 
-export default createLinkedList;
+export default createDoublyLinkedList;
 

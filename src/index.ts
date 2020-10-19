@@ -1,5 +1,5 @@
-import createLinkedList from "./linked-list";
+import createDoublyLinkedList from "./doubly-linked-list";
 
 export {
-  createLinkedList,
+  createDoublyLinkedList,
 };

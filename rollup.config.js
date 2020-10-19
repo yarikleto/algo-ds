@@ -9,14 +9,17 @@ export default {
     {
       file: pkg.browser,
       format: 'umd',
+      sourcemap: 'inline'
     },
     {
       file: pkg.main,
       format: 'cjs',
+      sourcemap: 'inline'
     },
     {
       file: pkg.module,
       format: 'es',
+      sourcemap: 'inline'
     },
   ],
   plugins: [

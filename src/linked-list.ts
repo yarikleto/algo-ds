@@ -60,7 +60,7 @@ const createLinkedList = () => {
   const removeFirst = () => {
     if (!head) return;
 
-    if (head === tail) {
+    if (!head.next) {
       head = null;
       tail = null;
     } else {
@@ -74,7 +74,7 @@ const createLinkedList = () => {
   const removeLast = () => {
     if (!tail) return;
 
-    if (tail === head) {
+    if (!tail.prev) {
       head = null;
       tail = null;
     } else {
@@ -94,8 +94,8 @@ const createLinkedList = () => {
         continue;
       }
 
-      if (current === head) removeFirst();
-      else if (current === tail) removeLast();
+      if (!current.prev) removeFirst();
+      else if (!current.next) removeLast();
       else {
         current.prev.next = current.next;
         current.next.prev = current.prev;

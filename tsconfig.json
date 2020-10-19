@@ -9,7 +9,8 @@
     "sourceMap": true,
     "strict": true,
     "typeRoots": ["./typings", "node_modules/@types"],
+    "target": "ES5"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "**/*.test.ts"]
   }

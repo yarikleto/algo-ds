@@ -2,7 +2,7 @@
   "rootDir": "./src",
   "baseUrl": ".",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,

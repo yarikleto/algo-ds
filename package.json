@@ -1,6 +1,6 @@
 {
   "name": "algo-ds",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "Implementations of algorithms and data structures in JS",
   "main": "dist/algo-ds.cjs.js",
   "module": "dist/algo-ds.esm.js",
@@ -13,7 +13,13 @@
     "test:coverage": "npm run test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
-  "keywords": ["data structures", "algorithms", "algorithms and data structures", "js", "javascript"],
+  "keywords": [
+    "data structures",
+    "algorithms",
+    "algorithms and data structures",
+    "js",
+    "javascript"
+  ],
   "author": "Yarik Leto <yarikleto@yandex.ru>",
   "license": "Unlicense",
   "homepage": "https://github.com/yarikleto/algo-ds#readme",
@@ -25,16 +31,21 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "6.0.0",
     "@types/jest": "26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
     "jest": "26.5.3",
     "jest-coverage-badges": "^1.1.2",
     "rollup": "2.32.0",
+    "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-terser": "7.0.2",
     "rollup-plugin-tslint": "0.2.2",
     "ts-jest": "26.4.1",
-    "tslint": "6.1.3",
-    "typescript": "4.0.3"
+    "typescript": "^4.0.3"
   },
   "dependencies": {}
 }

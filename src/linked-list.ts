@@ -4,6 +4,8 @@ interface Node {
   prev: Node | null;
 }
 
+type ForEachFunction = (value: any) => void;
+
 const createNode = (value: any): Node => ({
   value,
   next: null,
@@ -43,7 +45,7 @@ const createLinkedList = () => {
 
     const node: Node = createNode(value);
 
-    if (head == null) {
+    if (head == null || tail == null) {
       head = node;
       tail = node;
     } else {
@@ -56,19 +58,35 @@ const createLinkedList = () => {
   };
 
   const removeFirst = () => {
-    head.next.prev = null;
-    head = head.next;
+    if (!head) return;
+
+    if (head === tail) {
+      head = null;
+      tail = null;
+    } else {
+      head.next.prev = null;
+      head = head.next;
+    }
+
     size -= 1;
   };
 
   const removeLast = () => {
-    tail.prev.next = null;
-    tail = tail.prev;
+    if (!tail) return;
+
+    if (tail === head) {
+      head = null;
+      tail = null;
+    } else {
+      tail.prev.next = null;
+      tail = tail.prev;
+    }
+
     size -= 1;
   };
 
   const remove = (value: any): boolean => {
-    let current: Node = head;
+    let current: Node | null = head;
 
     while (current != null) {
       if (!Object.is(current.value, value)) {
@@ -81,9 +99,9 @@ const createLinkedList = () => {
       else {
         current.prev.next = current.next;
         current.next.prev = current.prev;
+        size -= 1;
       }
 
-      size -= 1;
       return true;
     }
 
@@ -97,7 +115,7 @@ const createLinkedList = () => {
   };
 
   const contains = (value: any): boolean => {
-    let current: Node = head;
+    let current: Node | null = head;
 
     while (current != null) {
       if (!Object.is(current.value, value)) {
@@ -111,8 +129,8 @@ const createLinkedList = () => {
     return false;
   };
 
-  const forEach = (fn) => {
-    let current: Node = head;
+  const forEach = (fn: ForEachFunction) => {
+    let current: Node | null = head;
 
     while (current != null) {
       fn(current.value);
@@ -121,7 +139,7 @@ const createLinkedList = () => {
   };
 
   const copyTo = () => {
-    let current: Node = head;
+    let current: Node | null = head;
     let index = 0;
     const result = Array(size);
 

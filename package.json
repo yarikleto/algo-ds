@@ -13,7 +13,7 @@
     "test:coverage": "npm run test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
-  "keywords": [],
+  "keywords": ["data structures", "algorithms", "algorithms and data structures", "js", "javascript"],
   "author": "Yarik Leto <alfimois@gmail.com>",
   "license": "MIT",
   "repository": {

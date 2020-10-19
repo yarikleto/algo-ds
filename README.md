@@ -3,7 +3,7 @@
     <br/>
     💻
     <br />
-    Algorithms and Data Structures (JS)
+    Algorithms and Data Structures
     <br />
   </h1>
   <sup>

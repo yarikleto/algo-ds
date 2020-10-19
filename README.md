@@ -15,16 +15,16 @@
     <a href="https://www.npmjs.com/package/algo-ds">
       <img src="https://img.shields.io/bundlephobia/min/algo-ds?color=%23009688" alt="npm size" />
     </a>
-    <a href="https://www.npmjs.com/package/algo-ds">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="coverage/badge-branches.svg" alt="npm size" />
     </a>
-    <a href="https://www.npmjs.com/package/algo-ds">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="coverage/badge-functions.svg" alt="npm size" />
     </a>
-    <a href="https://www.npmjs.com/package/algo-ds">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="coverage/badge-statements.svg" alt="npm size" />
     </a>
-    <a href="https://www.npmjs.com/package/algo-ds">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="coverage/badge-lines.svg" alt="npm size" />
     </a>
     <br />

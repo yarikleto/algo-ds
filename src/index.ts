@@ -1,1 +1,5 @@
-export default () => 1;
+import createLinkedList from "./linked-list";
+
+export {
+  createLinkedList,
+}

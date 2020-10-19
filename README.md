@@ -37,9 +37,7 @@
   <br />
   <br />
   <br />
-  <br />
-  <br />
 </div>
 
 # Data structures
-- [LinkedList](https://github.com/yarikleto/algo-ds/blob/master/linked-list.md)
+- [DoublyLinkedList](https://github.com/yarikleto/algo-ds/blob/master/doubly-linked-list.md)

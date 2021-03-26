@@ -210,7 +210,7 @@ doublyLinkedList.isEmpty(); // false
 
 ---
 
-- **`getNodeByValue(value: any)`**_`: Node | null`_ - Checking whether the list is empty
+- **`getNodeByValue(value: any)`**_`: Node | null`_ - Returns a node of value
 > Time: **O(n)** | **n** - number of nodes
 ```js
 const person = { name: "Yarik" };

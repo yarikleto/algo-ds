@@ -188,7 +188,7 @@ doublyLinkedList.addFront(1);
 doublyLinkedList.addFront(2);
 doublyLinkedList.addFront(3);
 
-const arr = doublyLinkedList.copyTo(); // [1, 2, 3]
+const arr = doublyLinkedList.copyToArray(); // [1, 2, 3]
 const newArr = arr.map(n => n + 1); // [2, 3, 4]
 
 doublyLinkedList.clear();

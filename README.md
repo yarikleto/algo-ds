@@ -19,16 +19,16 @@
       <img src="https://img.shields.io/npm/dm/algo-ds.svg" alt="npm downloads" />
     </a>
     <br />
-    <a href="/coverage/lcov-report/">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="https://raw.githubusercontent.com/yarikleto/algo-ds/098ee7c5d0d4f82b8fd3f2fb1511334574ad88c6/coverage/badge-branches.svg" alt="npm size" />
     </a>
-    <a href="/coverage/lcov-report/">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="https://raw.githubusercontent.com/yarikleto/algo-ds/098ee7c5d0d4f82b8fd3f2fb1511334574ad88c6/coverage/badge-functions.svg" alt="npm size" />
     </a>
-    <a href="/coverage/lcov-report/">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="https://raw.githubusercontent.com/yarikleto/algo-ds/098ee7c5d0d4f82b8fd3f2fb1511334574ad88c6/coverage/badge-statements.svg" alt="npm size" />
     </a>
-    <a href="/coverage/lcov-report/">
+    <a href="https://yarikleto.github.io/algo-ds/coverage/lcov-report/">
       <img src="https://raw.githubusercontent.com/yarikleto/algo-ds/098ee7c5d0d4f82b8fd3f2fb1511334574ad88c6/coverage/badge-lines.svg" alt="npm size" />
     </a>
     <br />

@@ -44,4 +44,4 @@
 </div>
 
 # Data structures
-- [DoublyLinkedList](https://github.com/yarikleto/algo-ds/blob/master/doubly-linked-list.md)
+- [DoublyLinkedList](/doubly-linked-list.md)

@@ -9,7 +9,7 @@ In computer science, a doubly linked list is a linked data structure that consis
 
 ## Usage
 ```js
-import createDoublyLinkedList from "algo-ds/doubly-linked-list.test";
+import { createDoublyLinkedList } from "algo-ds";
 
 const doublyLinkedList = createDoublyLinkedList();
 ```

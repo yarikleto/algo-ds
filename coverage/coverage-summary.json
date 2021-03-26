@@ -1,3 +1,3 @@
-{"total": {"lines":{"total":89,"covered":89,"skipped":0,"pct":100},"statements":{"total":95,"covered":95,"skipped":0,"pct":100},"functions":{"total":15,"covered":15,"skipped":0,"pct":100},"branches":{"total":26,"covered":26,"skipped":0,"pct":100}}
-,"/Users/yarik_leto/Documents/projects/algo-ds/src/doubly-linked-list.ts": {"lines":{"total":89,"covered":89,"skipped":0,"pct":100},"functions":{"total":15,"covered":15,"skipped":0,"pct":100},"statements":{"total":95,"covered":95,"skipped":0,"pct":100},"branches":{"total":26,"covered":26,"skipped":0,"pct":100}}
+{"total": {"lines":{"total":116,"covered":116,"skipped":0,"pct":100},"statements":{"total":121,"covered":121,"skipped":0,"pct":100},"functions":{"total":18,"covered":18,"skipped":0,"pct":100},"branches":{"total":30,"covered":30,"skipped":0,"pct":100}}
+,"/Users/yarik_leto/Documents/projects/algo-ds/src/doubly-linked-list.ts": {"lines":{"total":116,"covered":116,"skipped":0,"pct":100},"functions":{"total":18,"covered":18,"skipped":0,"pct":100},"statements":{"total":121,"covered":121,"skipped":0,"pct":100},"branches":{"total":30,"covered":30,"skipped":0,"pct":100}}
 }

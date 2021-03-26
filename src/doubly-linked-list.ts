@@ -1,28 +1,43 @@
-interface Node {
+export interface Node {
   value: any;
   next: Node | null;
   prev: Node | null;
 }
 
-type ForEachFunction = (value: any) => void;
+export interface IDoublyLinkedList {
+  head: Node | null;
+  tail: Node | null;
+  size: number;
 
-const createNode = (value: any): Node => ({
+  addFront: (value: any) => void;
+  addEnd: (value: any) => void;
+  removeFront: () => void;
+  removeEnd: () => void;
+  remove: (value: any) => boolean;
+  clear: () => void;
+  contains: (value: any) => boolean;
+  forEach: (fn: ForEachFunction) => void;
+  copyToArray: () => any[];
+  isEmpty: () => boolean;
+  addBefore: (valueBefore: any, value: any) => boolean;
+  addAfter: (valueAfter: any, value: any) => boolean;
+  getNodeByValue: (value: any) => Node | null;
+}
+
+type ForEachFunction = (value: any, index: number) => void;
+
+export const createNode = (value: any): Node => ({
   value,
   next: null,
   prev: null,
 });
 
-const createDoublyLinkedList = () => {
+export const createDoublyLinkedList = (): IDoublyLinkedList => {
   let head: Node | null = null;
   let tail: Node | null = null;
   let size = 0;
 
-  const addFirst = (value: any | any[]) => {
-    if (Array.isArray(value)) {
-      value.reduceRight((_, v) => addFirst(v), null);
-      return;
-    }
-
+  const addFront = (value: any) => {
     const node: Node = createNode(value);
 
     if (head == null) {
@@ -37,12 +52,7 @@ const createDoublyLinkedList = () => {
     size += 1;
   };
 
-  const addLast = (value: any) => {
-    if (Array.isArray(value)) {
-      value.forEach(addLast);
-      return;
-    }
-
+  const addEnd = (value: any) => {
     const node: Node = createNode(value);
 
     if (head == null || tail == null) {
@@ -57,7 +67,7 @@ const createDoublyLinkedList = () => {
     size += 1;
   };
 
-  const removeFirst = () => {
+  const removeFront = () => {
     if (!head) return;
 
     if (!head.next) {
@@ -71,7 +81,7 @@ const createDoublyLinkedList = () => {
     size -= 1;
   };
 
-  const removeLast = () => {
+  const removeEnd = () => {
     if (!tail) return;
 
     if (!tail.prev) {
@@ -94,8 +104,8 @@ const createDoublyLinkedList = () => {
         continue;
       }
 
-      if (!current.prev) removeFirst();
-      else if (!current.next) removeLast();
+      if (!current.prev) removeFront();
+      else if (!current.next) removeEnd();
       else {
         current.prev.next = current.next;
         current.next.prev = current.prev;
@@ -114,31 +124,36 @@ const createDoublyLinkedList = () => {
     size = 0;
   };
 
-  const contains = (value: any): boolean => {
+  const getNodeByValue = (value: any): Node | null => {
     let current: Node | null = head;
 
     while (current != null) {
-      if (!Object.is(current.value, value)) {
-        current = current.next;
-        continue;
+      if (Object.is(current.value, value)) {
+        return current;
       }
-
-      return true;
+      
+      current = current.next;
     }
 
-    return false;
+    return null;
+  }
+
+  const contains = (value: any): boolean => {
+    return Boolean(getNodeByValue(value));
   };
 
   const forEach = (fn: ForEachFunction) => {
     let current: Node | null = head;
+    let i = 0;
 
     while (current != null) {
-      fn(current.value);
+      fn(current.value, i);
       current = current.next;
+      i += 1;
     }
   };
 
-  const copyTo = () => {
+  const copyToArray = (): any[] => {
     let current: Node | null = head;
     let index = 0;
     const result = Array(size);
@@ -152,6 +167,56 @@ const createDoublyLinkedList = () => {
     return result;
   }
 
+  const isEmpty = (): boolean => {
+    return Boolean(size === 0);
+  }
+
+  const addBefore = (valueBefore: any, value: any): boolean => {
+    const nodeBefore = getNodeByValue(valueBefore);
+
+    if (!nodeBefore) {
+      return false;
+    }
+
+    if (nodeBefore === head) {
+      addFront(value);
+      return true;
+    }
+
+    const newNode: Node = createNode(value);
+
+    nodeBefore.prev.next = newNode;
+    newNode.prev = nodeBefore.prev;
+    nodeBefore.prev = newNode;
+    newNode.next = nodeBefore;
+    size += 1;
+
+    return true;
+  }
+
+  const addAfter = (valueAfter: any, value: any): boolean => {
+    const nodeAfter = getNodeByValue(valueAfter);
+
+    if (!nodeAfter) {
+      return false;
+    }
+
+    if (nodeAfter === tail) {
+      addEnd(value);
+      return true;
+    }
+
+    const newNode: Node = createNode(value);
+
+    nodeAfter.next.prev = newNode;
+    newNode.next = nodeAfter.next;
+    nodeAfter.next = newNode;
+    newNode.prev = nodeAfter;
+    size += 1;
+
+    return true;
+  }
+
   return {
     get head() {
       return head;
@@ -162,15 +227,19 @@ const createDoublyLinkedList = () => {
     get size() {
       return size;
     },
-    addFirst,
-    addLast,
-    removeFirst,
-    removeLast,
+    addFront,
+    addEnd,
+    removeFront,
+    removeEnd,
     remove,
     clear,
     contains,
     forEach,
-    copyTo,
+    copyToArray,
+    getNodeByValue,
+    isEmpty,
+    addBefore,
+    addAfter,
     __proto__: null
   };
 }

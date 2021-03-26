@@ -104,5 +104,11 @@ doublyLinkedList.forEach(v => console.log(v)); // 1 2 3
 - **`copyTo()`**_`: any[]`_ - Create an array from the linked list
 ```js
 doublyLinkedList.addFirst([1, 2, 3]);
-doublyLinkedList.copyTo(); //-> [1, 2, 3]
+const arr = doublyLinkedList.copyTo(); // [1, 2, 3]
+const newArr = arr.map(n => n + 1); // [2, 3, 4]
+
+doublyLinkedList.clear();
+doublyLinkedList.addFirst(newArr);
+doublyLinkedList.head.value; //-> 2
+doublyLinkedList.tail.value; //-> 4
 ```

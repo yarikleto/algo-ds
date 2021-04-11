@@ -25,7 +25,6 @@ const createConfigForFile = (fileName) => ({
     file: `./${fileName.replace('.ts', '.js')}`,
     format: "cjs",
     sourcemap: "inline",
-    exports: "auto",
   },
   plugins,
 });
@@ -43,7 +42,6 @@ const mainConfig = {
       file: pkg.main,
       format: "cjs",
       sourcemap: "inline",
-      exports: "auto",
     },
     {
       file: pkg.module,

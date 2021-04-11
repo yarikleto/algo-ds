@@ -1,6 +1,6 @@
 {
   "name": "algo-ds",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Implementations of algorithms and data structures in JS",
   "main": "./algo-ds.cjs.js",
   "module": "./algo-ds.esm.js",

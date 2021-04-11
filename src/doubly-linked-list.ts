@@ -1,44 +1,46 @@
-export interface Node {
-  value: any;
-  next: Node | null;
-  prev: Node | null;
+export interface Node<NodeValueType> {
+  value: NodeValueType;
+  next: Node<NodeValueType> | null;
+  prev: Node<NodeValueType> | null;
 }
 
-export interface IDoublyLinkedList {
-  head: Node | null;
-  tail: Node | null;
+export interface IDoublyLinkedList<NodeValueType> {
+  head: Node<NodeValueType> | null;
+  tail: Node<NodeValueType> | null;
   size: number;
 
-  addFront: (value: any) => void;
-  addEnd: (value: any) => void;
+  addFront: (value: NodeValueType) => void;
+  addEnd: (value: NodeValueType) => void;
   removeFront: () => void;
   removeEnd: () => void;
-  remove: (value: any) => boolean;
+  remove: (value: NodeValueType) => boolean;
   clear: () => void;
-  contains: (value: any) => boolean;
-  forEach: (fn: ForEachFunction) => void;
-  copyToArray: () => any[];
+  contains: (value: NodeValueType) => boolean;
+  forEach: (fn: ForEachFunction<NodeValueType>) => void;
+  copyToArray: () => NodeValueType[];
   isEmpty: () => boolean;
-  addBefore: (valueBefore: any, value: any) => boolean;
-  addAfter: (valueAfter: any, value: any) => boolean;
-  getNodeByValue: (value: any) => Node | null;
+  addBefore: (valueBefore: NodeValueType, value: NodeValueType) => boolean;
+  addAfter: (valueAfter: NodeValueType, value: NodeValueType) => boolean;
+  getNodeByValue: (value: NodeValueType) => Node<NodeValueType> | null;
+
+  __proto__: null;
 }
 
-type ForEachFunction = (value: any, index: number) => void;
+export type ForEachFunction<NodeValueType> = (value: NodeValueType, index: number) => void;
 
-export const createNode = (value: any): Node => ({
+export const createNode = <NodeValueType>(value: NodeValueType): Node<NodeValueType> => ({
   value,
   next: null,
   prev: null,
 });
 
-export const createDoublyLinkedList = (): IDoublyLinkedList => {
-  let head: Node | null = null;
-  let tail: Node | null = null;
+export const createDoublyLinkedList = <NodeValueType>(): IDoublyLinkedList<NodeValueType> => {
+  let head: Node<NodeValueType> | null = null;
+  let tail: Node<NodeValueType> | null = null;
   let size = 0;
 
-  const addFront = (value: any) => {
-    const node: Node = createNode(value);
+  const addFront = (value: NodeValueType) => {
+    const node: Node<NodeValueType> = createNode(value);
 
     if (head == null) {
       head = node;
@@ -52,8 +54,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     size += 1;
   };
 
-  const addEnd = (value: any) => {
-    const node: Node = createNode(value);
+  const addEnd = (value: NodeValueType) => {
+    const node: Node<NodeValueType> = createNode<NodeValueType>(value);
 
     if (head == null || tail == null) {
       head = node;
@@ -95,8 +97,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     size -= 1;
   };
 
-  const remove = (value: any): boolean => {
-    let current: Node | null = head;
+  const remove = (value: NodeValueType): boolean => {
+    let current: Node<NodeValueType> | null = head;
 
     while (current != null) {
       if (!Object.is(current.value, value)) {
@@ -124,8 +126,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     size = 0;
   };
 
-  const getNodeByValue = (value: any): Node | null => {
-    let current: Node | null = head;
+  const getNodeByValue = (value: NodeValueType): Node<NodeValueType> | null => {
+    let current: Node<NodeValueType> | null = head;
 
     while (current != null) {
       if (Object.is(current.value, value)) {
@@ -138,12 +140,12 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     return null;
   }
 
-  const contains = (value: any): boolean => {
+  const contains = (value: NodeValueType): boolean => {
     return Boolean(getNodeByValue(value));
   };
 
-  const forEach = (fn: ForEachFunction) => {
-    let current: Node | null = head;
+  const forEach = (fn: ForEachFunction<NodeValueType>) => {
+    let current: Node<NodeValueType> | null = head;
     let i = 0;
 
     while (current != null) {
@@ -153,8 +155,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     }
   };
 
-  const copyToArray = (): any[] => {
-    let current: Node | null = head;
+  const copyToArray = (): NodeValueType[] => {
+    let current: Node<NodeValueType> | null = head;
     let index = 0;
     const result = Array(size);
 
@@ -171,7 +173,7 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     return Boolean(size === 0);
   }
 
-  const addBefore = (valueBefore: any, value: any): boolean => {
+  const addBefore = (valueBefore: NodeValueType, value: NodeValueType): boolean => {
     const nodeBefore = getNodeByValue(valueBefore);
 
     if (!nodeBefore) {
@@ -183,9 +185,9 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
       return true;
     }
 
-    const newNode: Node = createNode(value);
+    const newNode: Node<NodeValueType> = createNode(value);
 
-    nodeBefore.prev.next = newNode;
+    nodeBefore!.prev!.next = newNode;
     newNode.prev = nodeBefore.prev;
     nodeBefore.prev = newNode;
     newNode.next = nodeBefore;
@@ -194,7 +196,7 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     return true;
   }
 
-  const addAfter = (valueAfter: any, value: any): boolean => {
+  const addAfter = (valueAfter: NodeValueType, value: NodeValueType): boolean => {
     const nodeAfter = getNodeByValue(valueAfter);
 
     if (!nodeAfter) {
@@ -206,9 +208,9 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
       return true;
     }
 
-    const newNode: Node = createNode(value);
+    const newNode: Node<NodeValueType> = createNode(value);
 
-    nodeAfter.next.prev = newNode;
+    nodeAfter!.next!.prev = newNode;
     newNode.next = nodeAfter.next;
     nodeAfter.next = newNode;
     newNode.prev = nodeAfter;
@@ -240,7 +242,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList => {
     isEmpty,
     addBefore,
     addAfter,
-    __proto__: null
+
+    __proto__: null // Delete inherited fields from proto
   };
 }
 

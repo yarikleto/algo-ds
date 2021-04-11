@@ -1,5 +1,5 @@
 {
-  "rootDir": "./src",
+  "rootDir": "src",
   "baseUrl": ".",
   "compilerOptions": {
     "module": "CommonJS",
@@ -8,8 +8,10 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "strict": true,
-    "typeRoots": ["./typings", "node_modules/@types"],
-    "target": "ES5"
+    "target": "ES5",
+    "lib": ["es2015"],
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types"],
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"]

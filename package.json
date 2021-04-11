@@ -1,19 +1,21 @@
 {
   "name": "algo-ds",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Implementations of algorithms and data structures in JS",
   "main": "dist/algo-ds.cjs.js",
   "module": "dist/algo-ds.esm.js",
   "browser": "dist/algo-ds.umd.js",
+  "types": "dist/algo-ds.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "addTypes": "tsc --project tsconfig.declaration.json",
+    "build": "npm run addTypes && rollup -c",
     "dev": "rollup -c -w",
     "lint": "eslint src --fix",
     "test": "jest --colors --notify",
     "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges",
-    "publish": "npm run lint && npm run test && npm run build && npm run test:badges && npm publish"
+    "npm:publish": "npm run lint && npm run test && npm run build && npm run test:badges && npm publish"
   },
   "keywords": [
     "data structures",

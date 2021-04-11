@@ -8,24 +8,62 @@ In computer science, a doubly linked list is a linked data structure that consis
 [logo]: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/1220px-Doubly-linked-list.svg.png
 
 ## Usage
-```js
-import { createDoublyLinkedList } from "algo-ds";
+
+#### JS Example
+```javascript
+import createDoublyLinkedList from "algo-ds/doubly-linked-list";
 
 const doublyLinkedList = createDoublyLinkedList();
+doublyLinkedList.addFront("Yarik");
+doublyLinkedList.addFront(10);
+```
+
+#### TS Example
+```typescript
+import createDoublyLinkedList from "algo-ds/doubly-linked-list";
+
+type NodeValueType = number | string;
+
+const doublyLinkedList = createDoublyLinkedList<NodeValueType>();
+doublyLinkedList.addFront("Yarik");
+doublyLinkedList.addFront(10);
+doublyLinkedList.addFront(true); // Type error
 ```
 
 ## API
 ```ts
-interface Node {
-  value: any;
+interface Node<NodeValueType> {
+  value: NodeValueType;
   next: Node | null;
   prev: Node | null;
+}
+
+interface IDoublyLinkedList<NodeValueType> {
+  head: Node<NodeValueType> | null;
+  tail: Node<NodeValueType> | null;
+  size: number;
+
+  addFront: (value: NodeValueType) => void;
+  addEnd: (value: NodeValueType) => void;
+  removeFront: () => void;
+  removeEnd: () => void;
+  remove: (value: NodeValueType) => boolean;
+  clear: () => void;
+  contains: (value: NodeValueType) => boolean;
+  forEach: (fn: ForEachFunction<NodeValueType>) => void;
+  copyToArray: () => NodeValueType[];
+  isEmpty: () => boolean;
+  addBefore: (valueBefore: NodeValueType, value: NodeValueType) => boolean;
+  addAfter: (valueAfter: NodeValueType, value: NodeValueType) => boolean;
+  getNodeByValue: (value: NodeValueType) => Node<NodeValueType> | null;
+
+  __proto__: null; // Delete inherited fields from proto
 }
 ```
 
 ---
 
-- **`head`**_`: Node | null`_ - A link to the first node
+- **`head`**_`: Node<NodeValueType> | null`_ - A link to the first node
 > Time: **O(1)**
 ```js
 doublyLinkedList.addFront(1);
@@ -37,7 +75,7 @@ doublyLinkedList.head; //-> { value: 1, prev: null, next: Node }
 
 ---
 
-- **`tail`**_`: Node | null`_ - A link to the last node
+- **`tail`**_`: Node<NodeValueType> | null`_ - A link to the last node
 > Time: **O(1)**
 ```js
 doublyLinkedList.addFront(1);
@@ -61,7 +99,7 @@ doublyLinkedList.size; //-> 3
 
 ---
 
-- **`addFront(value)`**_`: void`_ - Inserting an element at the front of the list.
+- **`addFront(value: NodeValueType)`**_`: void`_ - Inserting an element at the front of the list.
 > Time: **O(1)**
 
 > Space: **O(1)**
@@ -75,7 +113,7 @@ doublyLinkedList.head; //-> { value: "Yarik", prev: null, next: Node }
 
 ---
 
-- **`addEnd(value)`**_`: void`_ - Inserting an element at the end of the list.
+- **`addEnd(value: NodeValueType)`**_`: void`_ - Inserting an element at the end of the list.
 > Time: **O(1)**
 
 > Space: **O(1)**
@@ -117,7 +155,7 @@ doublyLinkedList.tail.value; //-> "c"
 
 ---
 
-- **`remove(value: any)`**_`: boolean`_ - Removing given value from the list
+- **`remove(value: NodeValueType)`**_`: boolean`_ - Removing given value from the list
 > Time: **O(n)** | **n** - number of nodes in the list
 
 > Space: **O(1)**
@@ -155,7 +193,7 @@ doublyLinkedList.tail; //-> null
 
 ---
 
-- **`contains(value: any)`**_`: boolean`_ - The method checks to see if a value is in the list
+- **`contains(value: NodeValueType)`**_`: boolean`_ - The method checks to see if a value is in the list
 > Time: **O(n)** | **n** - number of nodes
 ```js
 doublyLinkedList.addFront("a");
@@ -168,7 +206,7 @@ doublyLinkedList.contains("h"); //-> false
 
 ---
 
-- **`forEach(fn: (value: any, index: number) => void)`**_`: void`_ - The method executes a provided function once for each node's value.
+- **`forEach(fn: (value: NodeValueType, index: number) => void)`**_`: void`_ - The method executes a provided function once for each node's value.
 > Time: **O(n)** | **n** - number of nodes
 ```js
 doublyLinkedList.addFront("a");
@@ -179,7 +217,7 @@ doublyLinkedList.forEach((char, i) => console.log(`${i}:${char}`)); // "0:a" "1:
 
 ---
 
-- **`copyToArray()`**_`: any[]`_ - Create an array from the linked list
+- **`copyToArray()`**_`: NodeValueType[]`_ - Create an array from the linked list
 > Time: **O(n)** | **n** - number of nodes
 
 > Space: **O(n)** | **n** - number of nodes
@@ -210,7 +248,7 @@ doublyLinkedList.isEmpty(); // false
 
 ---
 
-- **`getNodeByValue(value: any)`**_`: Node | null`_ - Returns a node of value
+- **`getNodeByValue(value: NodeValueType)`**_`: Node<NodeValueType> | null`_ - Returns a node of value
 > Time: **O(n)** | **n** - number of nodes
 ```js
 const person = { name: "Yarik" };
@@ -221,7 +259,7 @@ doublyLinkedList.getNodeByValue(person); // { value: { name: "Yarik" }, prev: nu
 
 ---
 
-- **`addBefore(valueBefore: any, value: any)`**_`: boolean`_ - Inserting before given value
+- **`addBefore(valueBefore: NodeValueType, value: NodeValueType)`**_`: boolean`_ - Inserting before given value
 > Time: **O(n)** | **n** - number of nodes
 ```js
 doublyLinkedList.addBefore(1, 2); // false
@@ -232,7 +270,7 @@ doublyLinkedList.copyToArray(); // [2, 1]
 
 ---
 
-- **`addAfter(valueAfter: any, value: any)`**_`: boolean`_ - Inserting after given value
+- **`addAfter(valueAfter: NodeValueType, value: NodeValueType)`**_`: boolean`_ - Inserting after given value
 > Time: **O(n)** | **n** - number of nodes
 ```js
 doublyLinkedList.addAfter(1, 2); // false

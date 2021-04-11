@@ -1,0 +1,13 @@
+{
+  "rootDir": "src",
+  "baseUrl": ".",
+  "compilerOptions": {
+    "target": "ES6",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outFile": "dist/algo-ds.d.ts",
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+  }

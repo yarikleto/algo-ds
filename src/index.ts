@@ -1,5 +1,1 @@
-import createDoublyLinkedList from "./doubly-linked-list";
-
-export {
-  createDoublyLinkedList,
-};
+export * from "./doubly-linked-list";

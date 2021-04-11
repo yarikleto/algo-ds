@@ -305,7 +305,12 @@
 <a name='L246'></a><a href='#L246'>246</a>
 <a name='L247'></a><a href='#L247'>247</a>
 <a name='L248'></a><a href='#L248'>248</a>
-<a name='L249'></a><a href='#L249'>249</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -551,49 +556,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export interface Node {
-  value: any;
-  next: Node | null;
-  prev: Node | null;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export interface Node&lt;NodeValueType&gt; {
+  value: NodeValueType;
+  next: Node&lt;NodeValueType&gt; | null;
+  prev: Node&lt;NodeValueType&gt; | null;
 }
 &nbsp;
-export interface IDoublyLinkedList {
-  head: Node | null;
-  tail: Node | null;
+export interface IDoublyLinkedList&lt;NodeValueType&gt; {
+  head: Node&lt;NodeValueType&gt; | null;
+  tail: Node&lt;NodeValueType&gt; | null;
   size: number;
 &nbsp;
-  addFront: (value: any) =&gt; void;
-  addEnd: (value: any) =&gt; void;
+  addFront: (value: NodeValueType) =&gt; void;
+  addEnd: (value: NodeValueType) =&gt; void;
   removeFront: () =&gt; void;
   removeEnd: () =&gt; void;
-  remove: (value: any) =&gt; boolean;
+  remove: (value: NodeValueType) =&gt; boolean;
   clear: () =&gt; void;
-  contains: (value: any) =&gt; boolean;
-  forEach: (fn: ForEachFunction) =&gt; void;
-  copyToArray: () =&gt; any[];
+  contains: (value: NodeValueType) =&gt; boolean;
+  forEach: (fn: ForEachFunction&lt;NodeValueType&gt;) =&gt; void;
+  copyToArray: () =&gt; NodeValueType[];
   isEmpty: () =&gt; boolean;
-  addBefore: (valueBefore: any, value: any) =&gt; boolean;
-  addAfter: (valueAfter: any, value: any) =&gt; boolean;
-  getNodeByValue: (value: any) =&gt; Node | null;
+  addBefore: (valueBefore: NodeValueType, value: NodeValueType) =&gt; boolean;
+  addAfter: (valueAfter: NodeValueType, value: NodeValueType) =&gt; boolean;
+  getNodeByValue: (value: NodeValueType) =&gt; Node&lt;NodeValueType&gt; | null;
+&nbsp;
+  __proto__: null;
 }
 &nbsp;
-type ForEachFunction = (value: any, index: number) =&gt; void;
+export type ForEachFunction&lt;NodeValueType&gt; = (value: NodeValueType, index: number) =&gt; void;
 &nbsp;
-export const createNode = (value: any): Node =&gt; ({
+export const createNode = &lt;NodeValueType&gt;(value: NodeValueType): Node&lt;NodeValueType&gt; =&gt; ({
   value,
   next: null,
   prev: null,
 });
 &nbsp;
-export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
-  let head: Node | null = null;
-  let tail: Node | null = null;
+export const createDoublyLinkedList = &lt;NodeValueType&gt;(): IDoublyLinkedList&lt;NodeValueType&gt; =&gt; {
+  let head: Node&lt;NodeValueType&gt; | null = null;
+  let tail: Node&lt;NodeValueType&gt; | null = null;
   let size = 0;
 &nbsp;
-  const addFront = (value: any) =&gt; {
-    const node: Node = createNode(value);
+  const addFront = (value: NodeValueType) =&gt; {
+    const node: Node&lt;NodeValueType&gt; = createNode(value);
 &nbsp;
     if (head == null) {
       head = node;
@@ -607,8 +615,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     size += 1;
   };
 &nbsp;
-  const addEnd = (value: any) =&gt; {
-    const node: Node = createNode(value);
+  const addEnd = (value: NodeValueType) =&gt; {
+    const node: Node&lt;NodeValueType&gt; = createNode&lt;NodeValueType&gt;(value);
 &nbsp;
     if (head == null || tail == null) {
       head = node;
@@ -650,8 +658,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     size -= 1;
   };
 &nbsp;
-  const remove = (value: any): boolean =&gt; {
-    let current: Node | null = head;
+  const remove = (value: NodeValueType): boolean =&gt; {
+    let current: Node&lt;NodeValueType&gt; | null = head;
 &nbsp;
     while (current != null) {
       if (!Object.is(current.value, value)) {
@@ -679,8 +687,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     size = 0;
   };
 &nbsp;
-  const getNodeByValue = (value: any): Node | null =&gt; {
-    let current: Node | null = head;
+  const getNodeByValue = (value: NodeValueType): Node&lt;NodeValueType&gt; | null =&gt; {
+    let current: Node&lt;NodeValueType&gt; | null = head;
 &nbsp;
     while (current != null) {
       if (Object.is(current.value, value)) {
@@ -693,12 +701,12 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     return null;
   }
 &nbsp;
-  const contains = (value: any): boolean =&gt; {
+  const contains = (value: NodeValueType): boolean =&gt; {
     return Boolean(getNodeByValue(value));
   };
 &nbsp;
-  const forEach = (fn: ForEachFunction) =&gt; {
-    let current: Node | null = head;
+  const forEach = (fn: ForEachFunction&lt;NodeValueType&gt;) =&gt; {
+    let current: Node&lt;NodeValueType&gt; | null = head;
     let i = 0;
 &nbsp;
     while (current != null) {
@@ -708,8 +716,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     }
   };
 &nbsp;
-  const copyToArray = (): any[] =&gt; {
-    let current: Node | null = head;
+  const copyToArray = (): NodeValueType[] =&gt; {
+    let current: Node&lt;NodeValueType&gt; | null = head;
     let index = 0;
     const result = Array(size);
 &nbsp;
@@ -726,7 +734,7 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     return Boolean(size === 0);
   }
 &nbsp;
-  const addBefore = (valueBefore: any, value: any): boolean =&gt; {
+  const addBefore = (valueBefore: NodeValueType, value: NodeValueType): boolean =&gt; {
     const nodeBefore = getNodeByValue(valueBefore);
 &nbsp;
     if (!nodeBefore) {
@@ -738,9 +746,9 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
       return true;
     }
 &nbsp;
-    const newNode: Node = createNode(value);
+    const newNode: Node&lt;NodeValueType&gt; = createNode(value);
 &nbsp;
-    nodeBefore.prev.next = newNode;
+    nodeBefore!.prev!.next = newNode;
     newNode.prev = nodeBefore.prev;
     nodeBefore.prev = newNode;
     newNode.next = nodeBefore;
@@ -749,7 +757,7 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     return true;
   }
 &nbsp;
-  const addAfter = (valueAfter: any, value: any): boolean =&gt; {
+  const addAfter = (valueAfter: NodeValueType, value: NodeValueType): boolean =&gt; {
     const nodeAfter = getNodeByValue(valueAfter);
 &nbsp;
     if (!nodeAfter) {
@@ -761,9 +769,9 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
       return true;
     }
 &nbsp;
-    const newNode: Node = createNode(value);
+    const newNode: Node&lt;NodeValueType&gt; = createNode(value);
 &nbsp;
-    nodeAfter.next.prev = newNode;
+    nodeAfter!.next!.prev = newNode;
     newNode.next = nodeAfter.next;
     nodeAfter.next = newNode;
     newNode.prev = nodeAfter;
@@ -795,7 +803,8 @@ export const createDoublyLinkedList = (): IDoublyLinkedList =&gt; {
     isEmpty,
     addBefore,
     addAfter,
-    __proto__: null
+&nbsp;
+    __proto__: null // Delete inherited fields from proto
   };
 }
 &nbsp;
@@ -808,7 +817,7 @@ export default createDoublyLinkedList;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Mar 26 2021 17:56:18 GMT+0200 (Eastern European Standard Time)
+                at Sun Apr 11 2021 02:59:26 GMT+0300 (Eastern European Summer Time)
             </div>
         </div>
         <script src="prettify.js"></script>

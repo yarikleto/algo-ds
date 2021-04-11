@@ -22,8 +22,6 @@ export interface IDoublyLinkedList<NodeValueType> {
   addBefore: (valueBefore: NodeValueType, value: NodeValueType) => boolean;
   addAfter: (valueAfter: NodeValueType, value: NodeValueType) => boolean;
   getNodeByValue: (value: NodeValueType) => Node<NodeValueType> | null;
-
-  __proto__: null;
 }
 
 export type ForEachFunction<NodeValueType> = (value: NodeValueType, index: number) => void;
@@ -242,10 +240,7 @@ export const createDoublyLinkedList = <NodeValueType>(): IDoublyLinkedList<NodeV
     isEmpty,
     addBefore,
     addAfter,
-
-    __proto__: null // Delete inherited fields from proto
+    // @ts-ignore Delete inherited fields from proto
+    __proto__: null
   };
 }
-
-export default createDoublyLinkedList;
-

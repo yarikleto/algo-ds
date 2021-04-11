@@ -17,6 +17,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "no-var": 0
+        "no-var": 0,
+        "@typescript-eslint/ban-ts-comment": 1
     }
 };

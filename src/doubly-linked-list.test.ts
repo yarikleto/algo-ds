@@ -1,7 +1,7 @@
 import { createDoublyLinkedList, IDoublyLinkedList } from "./doubly-linked-list";
 
 describe("The doubly linked list is working well", () => {
-  let doublyLinkedList: IDoublyLinkedList;
+  let doublyLinkedList: IDoublyLinkedList<number>;
 
   beforeEach(() => {
     doublyLinkedList = createDoublyLinkedList();

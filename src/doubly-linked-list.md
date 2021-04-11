@@ -56,8 +56,6 @@ interface IDoublyLinkedList<NodeValueType> {
   addBefore: (valueBefore: NodeValueType, value: NodeValueType) => boolean;
   addAfter: (valueAfter: NodeValueType, value: NodeValueType) => boolean;
   getNodeByValue: (value: NodeValueType) => Node<NodeValueType> | null;
-
-  __proto__: null; // Delete inherited fields from proto
 }
 ```
 

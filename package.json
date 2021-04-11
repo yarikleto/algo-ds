@@ -1,11 +1,11 @@
 {
   "name": "algo-ds",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Implementations of algorithms and data structures in JS",
-  "main": "dist/algo-ds.cjs.js",
-  "module": "dist/algo-ds.esm.js",
-  "browser": "dist/algo-ds.umd.js",
-  "types": "dist/algo-ds.d.ts",
+  "main": "./algo-ds.cjs.js",
+  "module": "./algo-ds.esm.js",
+  "browser": "./algo-ds.umd.js",
+  "types": "./algo-ds.d.ts",
   "scripts": {
     "addTypes": "tsc --project tsconfig.declaration.json",
     "build": "npm run addTypes && rollup -c",

@@ -22,16 +22,16 @@ const excludeFiles = (files) => (fileName) => !files.includes(fileName);
 const createConfigForFile = (fileName) => ({
   input: `src/${fileName}`,
   output: {
-    file: `dist/${fileName.replace('.ts', '.js')}`,
+    file: `./${fileName.replace('.ts', '.js')}`,
     format: "cjs",
     sourcemap: "inline",
-    exports: "default",
+    exports: "auto",
   },
   plugins,
 });
 
 const mainConfig = {
-  input: "src/index.ts",
+  input: "src/algo-ds.ts",
   output: [
     {
       file: pkg.browser,
@@ -57,7 +57,7 @@ const mainConfig = {
 const configs = fs
   .readdirSync("./src/")
   .filter(includeTSfiles)
-  .filter(excludeFiles("index.ts"))
+  .filter(excludeFiles("algo-ds.ts"))
   .map(createConfigForFile);
 
 export default [

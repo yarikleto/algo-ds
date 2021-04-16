@@ -68,7 +68,7 @@ doublyLinkedList.addFront(1);
 doublyLinkedList.addFront(2);
 doublyLinkedList.addFront(3);
 
-doublyLinkedList.head; //-> { value: 1, prev: null, next: Node }
+doublyLinkedList.head; //-> { value: 3, prev: null, next: Node }
 ```
 
 ---
@@ -80,7 +80,7 @@ doublyLinkedList.addFront(1);
 doublyLinkedList.addFront(2);
 doublyLinkedList.addFront(3);
 
-doublyLinkedList.tail; //-> { value: 3, prev: Node, next: null }
+doublyLinkedList.tail; //-> { value: 1, prev: Node, next: null }
 ```
 
 ---
@@ -106,7 +106,7 @@ doublyLinkedList.addFront({ name: "Yarik" });
 doublyLinkedList.addFront({ name: "Mike" });
 doublyLinkedList.addFront({ name: "Alice" });
 
-doublyLinkedList.head; //-> { value: "Yarik", prev: null, next: Node }
+doublyLinkedList.head; //-> { value: "Alice", prev: null, next: Node }
 ```
 
 ---
@@ -133,8 +133,8 @@ doublyLinkedList.addFront("b");
 doublyLinkedList.addFront("c");
 doublyLinkedList.addFront("d");
 
-doublyLinkedList.removeFront(); // Removed the first node with value "a"
-doublyLinkedList.head.value; //-> "b"
+doublyLinkedList.removeFront(); // Removed the first node with value "d"
+doublyLinkedList.head.value; //-> "c"
 ```
 
 ---
@@ -147,8 +147,8 @@ doublyLinkedList.addFront("b");
 doublyLinkedList.addFront("c");
 doublyLinkedList.addFront("d");
 
-doublyLinkedList.removeEnd(); // // Removed the last node with value "d"
-doublyLinkedList.tail.value; //-> "c"
+doublyLinkedList.removeEnd(); // // Removed the last node with value "a"
+doublyLinkedList.tail.value; //-> "b"
 ```
 
 ---
@@ -165,7 +165,7 @@ doublyLinkedList.addFront("d");
 
 doublyLinkedList.remove("a"); //-> Returns `true` because it found a node with this value
 doublyLinkedList.remove("f"); //-> Returns `false` because it can't find a node with this value
-doublyLinkedList.forEach(v => console.log(v)); // "b" "c" "d"
+doublyLinkedList.forEach(v => console.log(v)); // "d" "c" "b"
 ```
 
 ---
@@ -179,8 +179,8 @@ doublyLinkedList.addFront("c");
 doublyLinkedList.addFront("d");
 
 doublyLinkedList.size; //-> 4
-doublyLinkedList.head.value; //-> "a"
-doublyLinkedList.tail.value; //-> "d"
+doublyLinkedList.head.value; //-> "d"
+doublyLinkedList.tail.value; //-> "a"
 
 doublyLinkedList.clear();
 
@@ -210,7 +210,7 @@ doublyLinkedList.contains("h"); //-> false
 doublyLinkedList.addFront("a");
 doublyLinkedList.addFront("b");
 doublyLinkedList.addFront("c");
-doublyLinkedList.forEach((char, i) => console.log(`${i}:${char}`)); // "0:a" "1:b" "2:c"
+doublyLinkedList.forEach((char, i) => console.log(`${i}:${char}`)); // "0:c" "1:b" "2:a"
 ```
 
 ---
@@ -224,8 +224,8 @@ doublyLinkedList.addFront(1);
 doublyLinkedList.addFront(2);
 doublyLinkedList.addFront(3);
 
-const arr = doublyLinkedList.copyToArray(); // [1, 2, 3]
-const newArr = arr.map(n => n + 1); // [2, 3, 4]
+const arr = doublyLinkedList.copyToArray(); // [3, 2, 1]
+const newArr = arr.map(n => n + 1); // [4, 3, 2]
 
 doublyLinkedList.clear();
 newArr.forEach(doublyLinkedList.addFront);

@@ -6,7 +6,7 @@
     Algorithms and Data Structures
     <br />
   </h1>
-  <sup>
+  <sup> 
     <br />
     <br />
     <a href="https://www.npmjs.com/package/algo-ds">

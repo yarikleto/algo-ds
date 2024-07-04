@@ -240,7 +240,7 @@ export const createDoublyLinkedList = <NodeValueType>(): IDoublyLinkedList<NodeV
     isEmpty,
     addBefore,
     addAfter,
-    // @ts-ignore Delete inherited fields from proto
+    // @ts-expect-error Delete inherited fields from proto
     __proto__: null
   };
 }

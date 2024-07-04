@@ -2,16 +2,16 @@
   "rootDir": "src",
   "baseUrl": ".",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ESNext",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES5",
-    "lib": ["es2015"],
+    "target": "ES6",
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types"],
+    "declarationDir": "build",
+    "declaration": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts"]

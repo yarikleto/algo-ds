@@ -1,7 +1,14 @@
 {
   "name": "algo-ds",
-  "version": "2.0.5",
-  "description": "Implementations of algorithms and data structures in JS",
+  "version": "2.0.6",
+  "description": "Implementations of algorithms and data structures in TypeScript",
+  "license": "MIT",
+  "author": "Yarik Leto <yarikleto.official@gmail.com>",
+  "homepage": "https://github.com/yarikleto/algo-ds#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yarikleto/algo-ds"
+  },
   "main": "./build/algo-ds.cjs.js",
   "module": "./build/algo-ds.esm.js",
   "browser": "./build/algo-ds.umd.js",
@@ -13,23 +20,8 @@
     "test": "jest --colors --notify",
     "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges",
-    "npm:publish": "npm run lint && npm run test && npm run build && npm run test:badges && npm publish",
-    "prepublishOnly": "npm run build"
-  },
-  "keywords": [
-    "data structures",
-    "algorithms",
-    "algorithms and data structures",
-    "js",
-    "javascript"
-  ],
-  "author": "Yarik Leto <yarikleto.official@gmail.com>",
-  "license": "Unlicense",
-  "homepage": "https://github.com/yarikleto/algo-ds#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yarikleto/algo-ds"
+    "test:badges": "npm run test:coverage && jest-coverage-badges",
+    "npm:publish": "npm run lint && npm run test && npm run build && npm run test:badges && npm publish"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -52,5 +44,13 @@
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
-  }
+  },
+  "keywords": [
+    "data structures",
+    "js",
+    "javascript",
+    "ts",
+    "typescript",
+    "doubly linked list"
+  ]
 }

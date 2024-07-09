@@ -3,9 +3,12 @@
     <br/>
     💻
     <br />
-    Algorithms and Data Structures
+    Algorithms and Data Structures in TypeScript
     <br />
   </h1>
+  <div>
+    The library has zero dependencies and is written in TypeScript. Works with ES modules, CommonJS, and UMD. It has a high test coverage and is well documented.
+  </div>
   <sup> 
     <br />
     <br />
@@ -33,15 +36,12 @@
     </a>
     <br />
   </sup>
-  <br />
-  <br />
-  <br />
-  <br />
-  <pre>npm i <a href="https://www.npmjs.com/package/algo-ds">algo-ds</a></pre>
-  <br />
-  <br />
-  <br />
 </div>
 
+How to install:
+```bash
+npm i algo-ds
+```
+
 # Data structures
-- [DoublyLinkedList](/src/doubly-linked-list.md)
+- [Doubly linked list](/src/doubly-linked-list.md)

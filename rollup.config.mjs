@@ -1,7 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonJs from "@rollup/plugin-commonjs";
-import fs from "fs";
 import pkg from "./package.json" assert { type: 'json' };
 
 export default {
@@ -9,7 +8,7 @@ export default {
   output: [
     {
       file: pkg.browser,
-      name: pkg.browser,
+      name: pkg.name,
       format: "umd",
       sourcemap: "inline",
     },
